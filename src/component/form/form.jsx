@@ -1,18 +1,28 @@
 import './form.scss'
-import react,{ useState } from 'react';
-
+import react,{ useEffect, useState } from 'react';
+import { CardTaskContainer } from '../card/cardTaskContainer';
 export const FormTask=()=>{
-  const [catgeory, setCategory]=useState('');
+  const [category, setCategory]=useState('');
   const onChangeCategory = event => setCategory(event.target.value);
   const [title, setTitle] = useState('');
   const onChangeTitle= event => setTitle(event.target.value);
   const [description, setDescription] = useState('');
   const onChangeDescription = event => setDescription(event.target.value);
-
-  const handleSubmit=()=>{
-    console.log(title, catgeory, description);
-  }
   
+  const [taskList, setTaskList] = useState([])
+  const newTaskList = {
+    category: category,
+    title: title,
+    description:description
+  }
+  const handleSubmit=()=>{
+   setTaskList(taskList => taskList.concat(newTaskList)) 
+  }
+  useEffect(()=>{
+    const localItems = localStorage.setItem('list-items', JSON.stringify(taskList))
+    return taskList.lenth > 1? localItems : []
+  })
+
   return(
     <div id='form-container'>
       <form className="form-task">
@@ -30,8 +40,6 @@ export const FormTask=()=>{
         </div>
       </form>
       <button onClick={handleSubmit} >Ajouter la tâche</button>
-
-
     </div>
   )
 }
