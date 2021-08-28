@@ -9,16 +9,10 @@ body{
 #container-app{
   display: flex;
   flex-direction: column;
-  width: 65%;
+  margin-top: 5%;
+  width: 800px;
   height: 100vh;
   margin: auto;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(235, 235, 235);
 }
 
-/* <-------CARD CONTAINER--------> */
-#container-card-task{
-  width: 80%;
-  height: auto;
-  background-color: rosybrown;
-}
-/* <-------TASK CONTAINER--------> */

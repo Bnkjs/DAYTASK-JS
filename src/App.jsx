@@ -1,13 +1,18 @@
 import React,{ useState } from 'react';
 import './index.scss';
 import { CardTaskContainer } from './component/card/cardTaskContainer';
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 export const App =() =>{
  
   return(
     <div id="container-app">
-      <h1>Salut</h1>
-      <p>Quelle mission veut-tu ajouter?</p>
-      <CardTaskContainer/>
+      <Router>
+        <Switch>
+          <Route exatc path="/">
+            <CardTaskContainer/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   )
 }
