@@ -1,34 +1,43 @@
-import react,{ useState } from 'react';
-import { CardTask } from './cardTask';
+import react,{ useState, useEffect } from 'react';
 import './card.scss';
 import { FormTask } from '../form/form';
 import { v4 as uuidv4 } from 'uuid';
+import { TaskHeader } from '../card/cardHeader';
+import { CardTask } from '../card/cardTask';
 
 export const CardTaskContainer=()=>{
-
-  const [showTask, setShowTask] = useState(false);
-  const itemsParsed = JSON.parse(localStorage.getItem('list-items'));
-  
-  const listItems = itemsParsed.map((items) => 
-   <CardTask key={uuidv4().toString()} category={items.category} title={items.title} desc={items.description} />
-  )
+  const [category, setCategory]= useState("");
+  const onChangeCategory = (e) => setCategory(e.target.value);
+  const [title, setTitle] = useState("");
+  const onChangeTitle = (e) => setTitle(e.target.value);
+  const [description, setDescription] = useState("");
+  const onChangeDescription = (e) => setDescription(e.target.value);
+  const [taskList, setTaskList] = useState([])
+  const newTaskList = {
+    category: category,
+    title: title,
+    description:description
+  }
+   
+ const handleSubmit=()=>{
+  setTaskList(taskList => taskList.concat(newTaskList))
+  }
 
   return(
   <div id='container-card-task'>
-    <FormTask/>
-     <header>
+    <FormTask inputCategory={category} onChangeCat={onChangeCategory} inputTitle={title} onChangeTitle={onChangeTitle} inputDescription={description} onChangeDesc={onChangeDescription} handleFunction={handleSubmit} />
+     <header> 
       <h1>Salut</h1>
       <p>Quelle mission veux-tu ajouter?</p>
      </header>
-      <div className='card-task-header'>
-        <div className="header-btn">
-          <button onClick={()=>{setShowTask(!showTask)}} >^</button>
-        </div>
-      </div>
-      {
-        showTask && <div className="task-content">
-          {listItems}
-      </div>
+     {
+      taskList.map((items)=>{
+        return(<>
+           <TaskHeader category={items.category}/> 
+           <div className="task-content">
+             <CardTask category={items.category} title={items.title} desc={items.description}/>
+          </div>
+        </>)})
       }
   </div>)
 }
