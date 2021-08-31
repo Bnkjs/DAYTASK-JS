@@ -12,7 +12,7 @@ export const CardTask=({category,title,desc, handlefunct})=>{
             <SaveOutlined/>
           </div>
           <div className="hr-header"></div>
-          <div key={uuidv4().toString()}>{category}</div>
+          <div>{category}</div>
          {showTask?
           <UpOutlined className="header-btn" color="#fff" onClick={()=>{setShowTask(!showTask)}}></UpOutlined>
             :
