@@ -1,18 +1,16 @@
+$font-primary:'Montserrat', sans-serif;
 body{
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: sans-serif;
-  background-color: rgb(205, 224, 252);
+  background-color: rgb(247, 186, 204);
 }
 
 #container-app{
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
+  display: block;
   width: 800px;
   height: 100vh;
   margin: auto;
-  background-color: rgb(245, 245, 245);
+  font-family: $font-primary;
 }
 

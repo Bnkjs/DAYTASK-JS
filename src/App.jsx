@@ -7,16 +7,16 @@ import { Provider, useSelector } from 'react-redux';
 export const App =() =>{
 
   return(
-    <Provider store={store} >
-    <div id="container-app">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-             <CardTaskContainer/>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+      <Provider store={store} >
+      <div id="container-app">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <CardTaskContainer/>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </Provider>
   )
 }

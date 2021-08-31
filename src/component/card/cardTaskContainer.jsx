@@ -3,6 +3,7 @@ import './card.scss';
 import { FormTask } from '../form/form';
 import { CardTask } from '../card/cardTask';
 import addTask from '../../utils/addTask';
+import { v4 as uuidv4 } from 'uuid';
 
 export const CardTaskContainer=()=>{
   const [category, setCategory]= useState("");
@@ -24,23 +25,21 @@ export const CardTaskContainer=()=>{
   const handleRemoveItem=(index)=>{
     setTaskList(taskList.filter(item => item.id !== index))
   }
-  
     useEffect(()=>{
   },[handleRemoveItem])
 
   return(
   <div id='container-card-task'>
-    <FormTask inputCategory={category} onChangeCat={onChangeCategory} inputTitle={title} onChangeTitle={onChangeTitle} inputDescription={description} onChangeDesc={onChangeDescription} handleFunction={handleSubmit} />
-     <header> 
-      <h1>Salut</h1>
+    <header> 
+      <h1>Salut 👋</h1>
       <p>Quelle mission veux-tu ajouter?</p>
      </header>
+    <FormTask inputCategory={category} onChangeCat={onChangeCategory} inputTitle={title} onChangeTitle={onChangeTitle} inputDescription={description} onChangeDesc={onChangeDescription} handleFunction={handleSubmit} />
+    <h4>Tâches ajoutées</h4>
      {
       taskList.map((item, index)=>{
         return(<>
-         <div className="task-header-category">
-             <CardTask key={item.id} category={item.category} title={item.title} desc={item.description} handlefunct={()=>handleRemoveItem(index)}/>
-        </div>
+             <CardTask key={uuidv4().toString()} category={item.category} title={item.title} desc={item.description} handlefunct={()=>handleRemoveItem(index)}/>
         </>)})
       }
      </div>)
