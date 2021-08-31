@@ -7,19 +7,35 @@
   justify-content: flex-start;
   flex-direction: column;
 }
+.task-header-container{
+  position: relative;
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  .hr-header{
+    height: 90%;
+    border-right: 2px solid rgb(247, 247, 247);
+  }
+ }
 
-.card-task-header{
- width: 80%;
- height: 10%;
- display: flex;
- justify-content: space-around;
- align-items: center;
- background-color: antiquewhite;
-}
+
+
 /* <-------TASK CONTAINER--------> */
 #task-container{
-  background-color: #ffff;
   border-radius: 5px;
   display: block;
   width: 50%;
+  margin: 1%;
+  #task-content{
+    width: 100%;
+    background-color: #fff;
+    .trash-icon{
+      cursor: pointer;
+      width: 5%;
+    }
+  }
 }

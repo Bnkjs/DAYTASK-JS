@@ -1,9 +1,8 @@
 import react,{ useState, useEffect } from 'react';
 import './card.scss';
 import { FormTask } from '../form/form';
-import { v4 as uuidv4 } from 'uuid';
-import { TaskHeader } from '../card/cardHeader';
 import { CardTask } from '../card/cardTask';
+import addTask from '../../utils/addTask';
 
 export const CardTaskContainer=()=>{
   const [category, setCategory]= useState("");
@@ -13,15 +12,21 @@ export const CardTaskContainer=()=>{
   const [description, setDescription] = useState("");
   const onChangeDescription = (e) => setDescription(e.target.value);
   const [taskList, setTaskList] = useState([])
-  const newTaskList = {
-    category: category,
-    title: title,
-    description:description
-  }
+  const [id, setId] = useState(0)
+  
+  const newTaskList= addTask.addTaskList(id, category, title, description)
    
  const handleSubmit=()=>{
   setTaskList(taskList => taskList.concat(newTaskList))
+  localStorage.setItem('list-items', JSON.stringify(taskList))
+  setId(id + 1)
   }
+  const handleRemoveItem=(index)=>{
+    setTaskList(taskList.filter(item => item.id !== index))
+  }
+  
+    useEffect(()=>{
+  },[handleRemoveItem])
 
   return(
   <div id='container-card-task'>
@@ -31,13 +36,14 @@ export const CardTaskContainer=()=>{
       <p>Quelle mission veux-tu ajouter?</p>
      </header>
      {
-      taskList.map((items)=>{
+      taskList.map((item, index)=>{
         return(<>
-           <TaskHeader category={items.category}/> 
-           <div className="task-content">
-             <CardTask category={items.category} title={items.title} desc={items.description}/>
-          </div>
+         <div className="task-header-category">
+             <CardTask key={item.id} category={item.category} title={item.title} desc={item.description} handlefunct={()=>handleRemoveItem(index)}/>
+        </div>
         </>)})
       }
-  </div>)
+     </div>)
+    
+ 
 }
