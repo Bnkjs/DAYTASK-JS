@@ -1,6 +1,6 @@
 import './form.scss';
 import { v4 as uuidv4 } from 'uuid';
-export const FormTask=({inputCategory, inputTitle, inputDescription, onChangeCat, onChangeDesc, onChangeTitle, handleFunction})=>{
+export const FormTask=({inputCategory, inputTitle, inputDescription, onChangeCat, onChangeDesc, onChangeTitle, handleFunction})=>{  
   return(
     <div id='form-container'>
       <form className="form">

@@ -16,11 +16,16 @@ export const CardTaskContainer=()=>{
   const [id, setId] = useState(0)
   const newTaskList= addTask.addTaskList(id, category, title, description)
    
- const handleSubmit=()=>{
-    setTaskList(taskList => taskList.concat(newTaskList))
-    setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? 1 : -1}))
-    localStorage.setItem('list-items', JSON.stringify(taskList))
-    setId(id + 1)
+ const handleSubmit=(e)=>{
+    if (category || title || description === ""){
+      e.preventDefault()
+      alert('nop')
+    } else{
+      setTaskList(taskList => taskList.concat(newTaskList))
+      setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? 1 : -1}))
+      localStorage.setItem('list-items', JSON.stringify(taskList))
+      setId(id + 1)
+    } 
   }
   const handleRemoveItem=(index)=>{
     setTaskList(taskList.filter(item => item.id !== index))
