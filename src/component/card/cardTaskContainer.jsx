@@ -6,6 +6,7 @@ import addTask from '../../utils/addTask';
 import { v4 as uuidv4 } from 'uuid';
 import { NotyfSuccessTask } from '../notifications';
 import { NotyfErrorTask } from '../notifications';
+import { NotyfDeleteTask } from '../notifications';
 
 export const CardTaskContainer=()=>{
   const [category, setCategory] = useState("");
@@ -21,7 +22,7 @@ export const CardTaskContainer=()=>{
  const handleSubmit=(e)=>{
   if (category && title && description !== ""){
       setTaskList(taskList => taskList.concat(newTaskList))
-      setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? -1 : 1}))
+      setTaskList(taskList => taskList.sort((a,b)=>{ return (a.id > b.id) ? -1 : 1}))
       localStorage.setItem('list-items', JSON.stringify(taskList))
       setId(id + 1)
       NotyfSuccessTask()
@@ -33,6 +34,7 @@ export const CardTaskContainer=()=>{
   }
   const handleRemoveItem=(index)=>{
     setTaskList(taskList.filter(item => item.id !== index))
+    NotyfDeleteTask()
   }
     useEffect(()=>{
   },[handleSubmit,handleRemoveItem])

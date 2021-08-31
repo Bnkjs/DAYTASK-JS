@@ -8,7 +8,7 @@
   align-items: center;
   flex-direction: column;
   background-color: rgb(245, 245, 245);
-
+  top: 3%;
   header{
     position: relative;
     margin-top: 7%;
@@ -45,11 +45,15 @@
     margin-right: 20%;
   }
   .header-btn{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
     margin-right: 5%;
     padding: 1%;
-
+    top: 0;
   }
- }
+  }
+  
 
 /* <-------TASK CONTAINER--------> */
 #task-container{
@@ -67,11 +71,14 @@
     height: 80%;
     background-color: #fff;
     margin-bottom: 1%;
-    div p{
+    .task-info p{
+      position: relative;
       margin: 0;
-      margin-top: 1.5%;
-      margin-left: 5%;
-      width: 100%;
+      margin-top: 2.5%;
+      left: 35px;
+    }
+    .task-title{
+      font-weight: bold;
     }
     .trash-icon{
       cursor: pointer;

@@ -22,7 +22,7 @@ export const CardTask=({category,title,desc, handlefunct})=>{
           <div id="task-container">
             {showTask && 
               <div id="task-content">
-                <div>
+                <div className='task-info'>
                   <p className="task-title">{title}</p>
                   <p className="task-desc">{desc}</p>
                 </div>

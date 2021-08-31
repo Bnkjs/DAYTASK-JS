@@ -27,3 +27,18 @@ export const NotyfErrorTask = () => {
     icon: false,
   });
 };
+
+export const NotyfDeleteTask = () => {
+  const notyf = new Notyf();
+  notyf.error({
+    message: '🧹 Tâche supprimée 💨',
+    background: 'orange',
+    position: {
+      x: 'right',
+      y: 'top',
+    },
+    duration: 3000,
+    icon: false,
+  });
+};
+
