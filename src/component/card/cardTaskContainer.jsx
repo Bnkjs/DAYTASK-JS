@@ -19,21 +19,23 @@ export const CardTaskContainer=()=>{
   const newTaskList= addTask.addTaskList(id, category, title, description)
    
  const handleSubmit=(e)=>{
-    if (onChangeCategory || onChangeTitle || onChangeDescription === ""){
-      e.preventDefault()
-      NotyfErrorTask()
-    } else{
+  if (category && title && description !== ""){
       setTaskList(taskList => taskList.concat(newTaskList))
-      setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? 1 : -1}))
+      setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? -1 : 1}))
       localStorage.setItem('list-items', JSON.stringify(taskList))
       setId(id + 1)
+      NotyfSuccessTask()
+    } else{
+      e.preventDefault()
+      NotyfErrorTask()
+      console.log(category, title, description);
     } 
   }
   const handleRemoveItem=(index)=>{
     setTaskList(taskList.filter(item => item.id !== index))
   }
     useEffect(()=>{
-  },[handleRemoveItem, handleSubmit])
+  },[handleSubmit,handleRemoveItem])
 
   return(
   <div id='container-card-task'>
