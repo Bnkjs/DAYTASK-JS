@@ -4,9 +4,11 @@ import { FormTask } from '../form/form';
 import { CardTask } from '../card/cardTask';
 import addTask from '../../utils/addTask';
 import { v4 as uuidv4 } from 'uuid';
+import { NotyfSuccessTask } from '../notifications';
+import { NotyfErrorTask } from '../notifications';
 
 export const CardTaskContainer=()=>{
-  const [category, setCategory]= useState("");
+  const [category, setCategory] = useState("");
   const onChangeCategory = (e) => setCategory(e.target.value);
   const [title, setTitle] = useState("");
   const onChangeTitle = (e) => setTitle(e.target.value);
@@ -17,9 +19,9 @@ export const CardTaskContainer=()=>{
   const newTaskList= addTask.addTaskList(id, category, title, description)
    
  const handleSubmit=(e)=>{
-    if (category || title || description === ""){
+    if (onChangeCategory || onChangeTitle || onChangeDescription === ""){
       e.preventDefault()
-      alert('nop')
+      NotyfErrorTask()
     } else{
       setTaskList(taskList => taskList.concat(newTaskList))
       setTaskList(taskList => taskList.sort((a,b)=>{ return (a.category > b.category) ? 1 : -1}))
