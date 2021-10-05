@@ -1,0 +1,60 @@
+$font-primary:'Montserrat', sans-serif;
+
+#form-container{
+  width: 80%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  background-color: #ffff;;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  position: block;
+  margin-bottom: 2%;
+}
+form{
+  width: 100%;
+  height: auto;
+}
+.wrap-content{
+  margin: 2%;
+  display: block;
+  position: relative;
+  label{
+    display: block;
+    margin: 0;
+    font-weight: 600;
+    color: #8a8a8a ;
+  }
+  input{
+   width: 85%;
+   height: 35px;
+   outline: none;
+   border: none;
+   padding: 0.3%;
+   border-bottom: 1px solid rgb(219,89,178);
+   font-family: $font-primary;
+   letter-spacing: 1px;
+ }
+}
+
+.btn-action{
+ border: none;
+ margin-bottom: 5%;
+ margin: 2%;
+ width: 130px;
+ height: 40px;
+ font-family: $font-primary;
+ cursor: pointer;
+ border-radius: 5px;
+ padding: 1%;
+ background-color: rgb(244, 244, 244);
+ transition: all 100ms ease-out;
+ &:hover{
+   background-color: #000;
+   color: #fff;
+   font-weight: bold;
+ }
+ &:active{
+   transform: scale(1.1);
+ }
+}
